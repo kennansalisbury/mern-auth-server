@@ -5,7 +5,6 @@ let jwt = require('jsonwebtoken')
 
 // POST /auth/login (find and validate user; send token)
 router.post('/login', (req, res) => {
-  console.log(req.body)
   //Find the user, check if existing
   db.User.findOne({
     email: req.body.email
@@ -34,7 +33,6 @@ router.post('/login', (req, res) => {
 
 // POST to /auth/signup (create user; generate token)
 router.post('/signup', (req, res) => {
-  console.log(req.body)
   //look up user to make sure doesn't already exist
   db.User.findOne({
     email: req.body.email
