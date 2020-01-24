@@ -22,7 +22,7 @@ router.post('/login', (req, res) => {
 
     //good user - issue token
     let token = jwt.sign(user.toJSON(), process.env.JWT_SECRET, {
-      expiresIn: 60
+      expiresIn: 60 * 60 * 8
     })
     res.send( {token} )
   })
@@ -50,7 +50,7 @@ router.post('/signup', (req, res) => {
       .then(newUser => {
         //Make new user a token
         let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
-          expiresIn: 60 //60 * 60 * 8  do shorter for dev/testing purposes, longer for deployment
+          expiresIn: 60 * 60 * 8  //do shorter for dev/testing purposes, longer for deployment
         })
         //Send token
         res.send( {token} )
